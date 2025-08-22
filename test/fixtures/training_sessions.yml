@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2025-08-22 16:05:38
+  finish_time: 2025-08-22 16:05:38
+  top_speed: 1
+  distance: 1.5
+  date: 2025-08-22
+  athlete: one
+
+two:
+  start_time: 2025-08-22 16:05:38
+  finish_time: 2025-08-22 16:05:38
+  top_speed: 1
+  distance: 1.5
+  date: 2025-08-22
+  athlete: two

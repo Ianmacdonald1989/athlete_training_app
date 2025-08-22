@@ -1,0 +1,6 @@
+<h1><%= @athlete.name %> - Stats</h1>
+
+<p>Total Distance: <%= @total_distance %> km</p>
+<p>Average Speed: <%= @average_speed.round(2) %> km/h</p>
+
+<%= link_to "Back to Profile", athlete_path(@athlete), class: "btn btn-secondary" %>

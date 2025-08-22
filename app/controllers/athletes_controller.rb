@@ -8,6 +8,7 @@ class AthletesController < ApplicationController
 
   # GET /athletes/1 or /athletes/1.json
   def show
+    @athlete = Athlete.find(params[:id])
   end
 
   # GET /athletes/new
@@ -55,6 +56,12 @@ class AthletesController < ApplicationController
       format.html { redirect_to athletes_path, notice: "Athlete was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
+  end
+
+  def stats
+    @athlete = Athlete.find(params[:id])
+    @total_distance = @athlete.training_sessions.sum(:distance)
+    @average_speed = @athlete.training_sessions.average(:top_speed) || 0
   end
 
   private
