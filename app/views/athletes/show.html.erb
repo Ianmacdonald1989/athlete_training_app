@@ -6,5 +6,7 @@
   <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
   <%= link_to "Back to athletes", athletes_path %> |
  
-  <%= link_to "View Stats", stats_athlete_path(@athlete), class: "btn btn-primary" %>
+  <%= link_to "View Stats", stats_athlete_path(@athlete), class: "btn btn-primary" %> |
+  <%= link_to "Add Training Session", new_athlete_training_session_path(@athlete), class: "btn btn-primary" %>
+
 </div>

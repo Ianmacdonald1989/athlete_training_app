@@ -60,8 +60,8 @@ class AthletesController < ApplicationController
 
   def stats
     @athlete = Athlete.find(params[:id])
-    @total_distance = @athlete.training_sessions.sum(:distance)
-    @average_speed = @athlete.training_sessions.average(:top_speed) || 0
+    @total_distance = @athlete.training_sessions.sum(:total_distancedistance)
+    @average_speed = @athlete.training_sessions.average(:average_speed) || 0
   end
 
   private

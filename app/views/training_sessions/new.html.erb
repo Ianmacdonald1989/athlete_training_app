@@ -1,0 +1,35 @@
+<h2>Add Training Session for <%= @athlete.name %></h2>
+
+<%= form_with(model: [@athlete, @training_session], local: true) do |f| %>
+  <div>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div>
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time %>
+  </div>
+
+  <div>
+    <%= f.label :finish_time %>
+    <%= f.datetime_select :finish_time %>
+  </div>
+
+  <div>
+    <%= f.label :top_speed %>
+    <%= f.number_field :average_speed, step: 0.1 %>
+  </div>
+
+  <div>
+    <%= f.label :distance %>
+    <%= f.number_field :total_distance, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= f.submit "Add Session" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Profile", athlete_path(@athlete) %>
+

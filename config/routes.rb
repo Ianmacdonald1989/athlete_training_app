@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get :stats
     end
+    resources :training_sessions, only: [ :new, :create ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
