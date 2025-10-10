@@ -60,18 +60,18 @@ class AthletesController < ApplicationController
 
   def stats
     @athlete = Athlete.find(params[:id])
-    @total_distance = @athlete.training_sessions.sum(:total_distancedistance)
+    @total_distance = @athlete.training_sessions.sum(:total_distance)
     @average_speed = @athlete.training_sessions.average(:average_speed) || 0
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_athlete
-      @athlete = Athlete.find(params.expect(:id))
+      @athlete = Athlete.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def athlete_params
-      params.expect(athlete: [ :profile, :name, :age, :sport_definition, :email ])
+      params.require(:athlete).permit(:profile, :name, :age, :sport_definition, :email)
     end
 end

@@ -21,14 +21,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_162835) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "athlete_profile", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.string "sport_definition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "athletes", force: :cascade do |t|
     t.string "profile"
     t.string "name"
