@@ -1,6 +1,35 @@
 <h1><%= @athlete.name %> - Stats</h1>
 
-<p>Total Distance: <%= @total_distance %> km</p>
+<p>Total Distance: <%= @total_distance.round(2) %> km</p>
 <p>Average Speed: <%= @average_speed.round(2) %> km/h</p>
+
+<h2>Training Sessions</h2>
+
+<% if @training_sessions.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>Finish Time</th>
+        <th>Distance (km)</th>
+        <th>Average Speed (km/h)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @training_sessions.each do |session| %>
+        <tr>
+          <td><%= session.date %></td>
+          <td><%= session.start_time&.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= session.finish_time&.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= session.total_distance %></td>
+          <td><%= session.average_speed %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No training sessions recorded yet.</p>
+<% end %>
 
 <%= link_to "Back to Profile", athlete_path(@athlete), class: "btn btn-secondary" %>
