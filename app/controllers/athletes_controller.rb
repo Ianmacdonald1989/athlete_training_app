@@ -62,19 +62,8 @@ class AthletesController < ApplicationController
     @athlete = Athlete.find(params[:id])
     @training_sessions = @athlete.training_sessions.order(date: :desc)
 
-    total_distance = @training_sessions.sum(:total_distance)
-
-    sessions_with_times = @training_sessions.select { |s| s.start_time.present? && s.finish_time.present? }
-    total_hours = sessions_with_times.sum do |session|
-      ((session.finish_time - session.start_time) / 1.hour).to_f
-    end
-
-    @total_distance = total_distance
-    @average_speed = if total_hours.positive?
-                       total_distance / total_hours
-                     else
-                       0
-                     end
+    @total_distance = @training_sessions.sum(:total_distance)
+    @average_speed = @training_sessions.average(:average_speed) || 0
   end
 
   private

@@ -7709,3 +7709,97 @@ Processing by AthletesController#stats as HTML
 Completed 200 OK in 83ms (Views: 2.3ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/athletes/1" for ::1 at 2026-03-13 17:27:57 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:83:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 16.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | GC: 0.0ms)
+Completed 200 OK in 324ms (Views: 45.9ms | ActiveRecord: 16.2ms (2 queries, 1 cached) | GC: 3.8ms)
+
+
+Started GET "/athletes/1/training_sessions/new" for ::1 at 2026-03-13 17:27:58 +0000
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 18.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | GC: 0.0ms)
+Completed 200 OK in 133ms (Views: 21.4ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/athletes/1/training_sessions" for ::1 at 2026-03-13 17:28:08 +0000
+Processing by TrainingSessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "training_session"=>{"date"=>"2026-03-13", "start_time(1i)"=>"2026", "start_time(2i)"=>"3", "start_time(3i)"=>"13", "start_time(4i)"=>"17", "start_time(5i)"=>"27", "finish_time(1i)"=>"2026", "finish_time(2i)"=>"3", "finish_time(3i)"=>"13", "finish_time(4i)"=>"17", "finish_time(5i)"=>"27", "average_speed"=>"23", "total_distance"=>"23"}, "commit"=>"Add Session", "athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:9:in `create'
+  [1m[36mTrainingSession Create (9.3ms)[0m  [1m[32mINSERT INTO "training_sessions" ("start_time", "finish_time", "average_speed", "total_distance", "date", "athlete_id", "created_at", "updated_at") VALUES ('2026-03-13 17:27:00', '2026-03-13 17:27:00', 23, 23.0, '2026-03-13', 1, '2026-03-13 17:28:08.205982', '2026-03-13 17:28:08.205982') RETURNING "id" /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:9:in `create'
+Redirected to http://localhost:3000/athletes/1
+Completed 302 Found in 113ms (ActiveRecord: 11.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1" for ::1 at 2026-03-13 17:28:08 +0000
+Processing by AthletesController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:83:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 89ms (Views: 4.4ms | ActiveRecord: 0.1ms (2 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/stats" for ::1 at 2026-03-13 17:28:09 +0000
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:62:in `stats'
+  [1m[36mTrainingSession Sum (3.4ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `stats'
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:67:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 97ms (Views: 2.8ms | ActiveRecord: 3.7ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/stats" for ::1 at 2026-03-13 17:30:19 +0000
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:62:in `stats'
+  [1m[36mTrainingSession Sum (0.1ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `stats'
+  [1m[36mTrainingSession Average (3.9ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:66:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:8
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:20
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 13.8ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | GC: 0.8ms)
+Completed 200 OK in 294ms (Views: 21.2ms | ActiveRecord: 9.9ms (5 queries, 0 cached) | GC: 2.4ms)
+
+
