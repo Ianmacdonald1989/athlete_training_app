@@ -1,11 +1,10 @@
 <% content_for :title, "New athlete" %>
 
 <h1>New athlete</h1>
+<p class="muted">Create an athlete profile to start tracking sessions and stats.</p>
 
 <%= render "form", athlete: @athlete %>
 
-<br>
-
-<div>
-  <%= link_to "Back to athletes", athletes_path %>
+<div class="actions">
+  <%= link_to "Back to athletes", athletes_path, class: "btn-secondary btn" %>
 </div>

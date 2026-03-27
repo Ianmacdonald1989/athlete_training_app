@@ -1,12 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 
 <%= render @athlete %>
 
-<div>
-  <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
-  <%= link_to "Back to athletes", athletes_path %> |
- 
-  <%= link_to "View Stats", stats_athlete_path(@athlete), class: "btn btn-primary" %> |
-  <%= link_to "Add Training Session", new_athlete_training_session_path(@athlete), class: "btn btn-primary" %>
-
+<div class="actions">
+  <%= link_to "Edit athlete", edit_athlete_path(@athlete), class: "btn-secondary btn" %>
+  <%= link_to "Back to athletes", athletes_path, class: "btn-secondary btn" %>
+  <%= link_to "View stats", stats_athlete_path(@athlete), class: "btn" %>
+  <%= link_to "Add training session", new_athlete_training_session_path(@athlete), class: "btn" %>
 </div>

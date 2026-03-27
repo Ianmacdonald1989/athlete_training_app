@@ -1,6 +1,6 @@
 <%= form_with(model: athlete) do |form| %>
   <% if athlete.errors.any? %>
-    <div style="color: red">
+    <div class="alert">
       <h2><%= pluralize(athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
 
       <ul>
@@ -12,27 +12,27 @@
   <% end %>
 
   <div>
-    <%= form.label :profile, style: "display: block" %>
+    <%= form.label :profile %>
     <%= form.text_field :profile %>
   </div>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :age, style: "display: block" %>
+    <%= form.label :age %>
     <%= form.number_field :age %>
   </div>
 
   <div>
-    <%= form.label :sport_definition, style: "display: block" %>
+    <%= form.label :sport_definition %>
     <%= form.text_field :sport_definition %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
+    <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
 

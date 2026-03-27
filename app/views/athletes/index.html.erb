@@ -1,16 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 
 <% content_for :title, "Athletes" %>
 
 <h1>Athletes</h1>
 
-<div id="athletes">
+<div id="athletes" class="grid-list">
   <% @athletes.each do |athlete| %>
     <%= render athlete %>
-    <p>
-      <%= link_to "Show this athlete", athlete %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "New athlete", new_athlete_path %>
+<div class="actions">
+  <%= link_to "New athlete", new_athlete_path, class: "btn" %>
+</div>

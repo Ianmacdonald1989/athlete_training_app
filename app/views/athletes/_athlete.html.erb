@@ -1,9 +1,6 @@
-<div id="<%= dom_id athlete %>">
+<div id="<%= dom_id athlete %>" class="card">
 
-  <p>
-    <strong>Name:</strong>
-    <%= athlete.name %>
-  </p>
+  <h2><%= athlete.name %></h2>
 
   <p>
     <strong>Age:</strong>
@@ -19,5 +16,9 @@
     <strong>Email:</strong>
     <%= athlete.email %>
   </p>
+
+  <div class="actions">
+    <%= link_to "Show profile", athlete, class: "btn" %>
+  </div>
 
 </div>
