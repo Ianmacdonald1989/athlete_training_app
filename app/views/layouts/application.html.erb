@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || "Athlete Training App" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,11 +20,45 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
 
   <body>
     <main class="page-shell">
+      <header class="app-header">
+        <%= link_to "Athlete Training App", athletes_path, class: "app-title" %>
+        <button id="theme-toggle" class="btn-secondary btn" type="button" aria-label="Toggle theme">
+          Toggle theme
+        </button>
+      </header>
       <%= yield %>
     </main>
+    <script>
+      (function() {
+        const themeToggle = document.getElementById("theme-toggle");
+        if (!themeToggle) return;
+
+        function updateToggleLabel(theme) {
+          themeToggle.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+        }
+
+        let currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+        updateToggleLabel(currentTheme);
+
+        themeToggle.addEventListener("click", function() {
+          currentTheme = currentTheme === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+          localStorage.setItem("theme", currentTheme);
+          updateToggleLabel(currentTheme);
+        });
+      })();
+    </script>
   </body>
 </html>
