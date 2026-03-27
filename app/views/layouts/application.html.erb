@@ -34,8 +34,11 @@
     <main class="page-shell">
       <header class="app-header">
         <%= link_to "Athlete Training App", athletes_path, class: "app-title" %>
-        <button id="theme-toggle" class="btn-secondary btn" type="button" aria-label="Toggle theme">
-          Toggle theme
+        <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-label="Toggle dark mode" aria-checked="false">
+          <span class="theme-switch-track">
+            <span class="theme-switch-thumb"></span>
+          </span>
+          <span class="theme-switch-label">Dark mode</span>
         </button>
       </header>
       <%= yield %>
@@ -45,18 +48,20 @@
         const themeToggle = document.getElementById("theme-toggle");
         if (!themeToggle) return;
 
-        function updateToggleLabel(theme) {
-          themeToggle.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+        function updateToggle(theme) {
+          const isDark = theme === "dark";
+          themeToggle.setAttribute("aria-checked", isDark ? "true" : "false");
+          themeToggle.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
         }
 
         let currentTheme = document.documentElement.getAttribute("data-theme") || "light";
-        updateToggleLabel(currentTheme);
+        updateToggle(currentTheme);
 
         themeToggle.addEventListener("click", function() {
           currentTheme = currentTheme === "dark" ? "light" : "dark";
           document.documentElement.setAttribute("data-theme", currentTheme);
           localStorage.setItem("theme", currentTheme);
-          updateToggleLabel(currentTheme);
+          updateToggle(currentTheme);
         });
       })();
     </script>

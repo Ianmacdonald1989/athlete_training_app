@@ -8647,3 +8647,31 @@ Processing by AthletesController#show as HTML
 Completed 200 OK in 96ms (Views: 2.2ms | ActiveRecord: 0.3ms (2 queries, 1 cached) | GC: 0.0ms)
 
 
+Started GET "/athletes/1" for 127.0.0.1 at 2026-03-27 09:17:23 +0000
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 3.1ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | GC: 0.1ms)
+Completed 200 OK in 148ms (Views: 15.8ms | ActiveRecord: 2.1ms (2 queries, 1 cached) | GC: 0.9ms)
+
+
+Started GET "/assets/application-b3aa2780.css" for 127.0.0.1 at 2026-03-27 09:17:24 +0000
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-03-27 09:17:38 +0000
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 9.0ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | GC: 0.4ms)
+Completed 200 OK in 120ms (Views: 10.9ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 1.3ms)
+
+
