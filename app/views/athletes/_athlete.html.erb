@@ -1,16 +1,17 @@
 <div id="<%= dom_id athlete %>" class="card">
 
-  <h2><%= athlete.name %></h2>
+  <h2><%= sport_icon(athlete.sport_definition) %> <%= athlete.name %></h2>
+
+  <p>
+  <strong>Sport:</strong>
+  <%= athlete.sport_definition %>
+  </p>
 
   <p>
     <strong>Age:</strong>
     <%= athlete.age %>
   </p>
 
-  <p>
-    <strong>Sport definition:</strong>
-    <%= athlete.sport_definition %>
-  </p>
 
   <p>
     <strong>Email:</strong>
