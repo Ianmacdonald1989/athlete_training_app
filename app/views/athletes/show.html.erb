@@ -9,4 +9,5 @@
   <%= link_to "Back to athletes", athletes_path, class: "btn-secondary btn" %>
   <%= link_to "View stats", stats_athlete_path(@athlete), class: "btn" %>
   <%= link_to "Add training session", new_athlete_training_session_path(@athlete), class: "btn" %>
+  <%= button_to "Delete athlete", @athlete, method: :delete, class: "btn-secondary btn", form: { data: { turbo_confirm: "Are you sure you want to delete this athlete?" } } %>
 </div>

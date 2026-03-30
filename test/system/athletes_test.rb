@@ -22,12 +22,12 @@ class AthletesTest < ApplicationSystemTestCase
     click_on "Create Athlete"
 
     assert_text "Athlete was successfully created"
-    click_on "Back"
+    click_on "Back to athletes"
   end
 
   test "should update Athlete" do
     visit athlete_url(@athlete)
-    click_on "Edit this athlete", match: :first
+    click_on "Edit athlete", match: :first
 
     fill_in "Age", with: @athlete.age
     fill_in "Email", with: @athlete.email
@@ -37,12 +37,14 @@ class AthletesTest < ApplicationSystemTestCase
     click_on "Update Athlete"
 
     assert_text "Athlete was successfully updated"
-    click_on "Back"
+    click_on "Back to athletes"
   end
 
   test "should destroy Athlete" do
     visit athlete_url(@athlete)
-    click_on "Destroy this athlete", match: :first
+    accept_confirm do
+      click_on "Delete athlete", match: :first
+    end
 
     assert_text "Athlete was successfully destroyed"
   end
