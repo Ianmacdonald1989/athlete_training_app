@@ -2,6 +2,20 @@
 
   <h2><%= sport_icon(athlete.sport_definition) %> <%= athlete.name %></h2>
 
+  <% sessions = athlete.training_sessions.to_a %>
+  <% distances = sessions.map(&:total_distance).compact %>
+  <% speeds = sessions.map(&:average_speed).compact %>
+  <% total_distance = distances.sum.to_f %>
+  <% avg_speed = speeds.any? ? (speeds.sum.to_f / speeds.size) : nil %>
+
+  <p class="muted">
+    <strong>Sessions:</strong> <%= sessions.size %>
+    <% if sessions.any? %>
+      · <strong>Total:</strong> <%= total_distance.round(2) %> km
+      · <strong>Avg speed:</strong> <%= avg_speed&.round(2) || 0 %> km/h
+    <% end %>
+  </p>
+
   <p>
   <strong>Sport:</strong>
   <%= athlete.sport_definition %>

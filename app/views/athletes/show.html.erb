@@ -4,6 +4,35 @@
 
 <%= render @athlete %>
 
+<h2>Recent Training Sessions</h2>
+
+<% if @recent_training_sessions.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>Finish Time</th>
+        <th>Distance (km)</th>
+        <th>Average Speed (km/h)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recent_training_sessions.each do |session| %>
+        <tr>
+          <td><%= session.date %></td>
+          <td><%= session.start_time&.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= session.finish_time&.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= session.total_distance %></td>
+          <td><%= session.average_speed %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="muted">No training sessions recorded yet.</p>
+<% end %>
+
 <div class="actions">
   <%= link_to "Edit athlete", edit_athlete_path(@athlete), class: "btn-secondary btn" %>
   <%= link_to "Back to athletes", athletes_path, class: "btn-secondary btn" %>

@@ -9700,3 +9700,436 @@ Processing by AthletesController#index as HTML
 Completed 200 OK in 76ms (Views: 3.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/athletes/1" for 127.0.0.1 at 2026-03-30 13:05:04 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (4.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 3.7ms | GC: 1.7ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 19.6ms | GC: 1.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | GC: 1.7ms)
+Completed 200 OK in 145ms (Views: 30.7ms | ActiveRecord: 4.0ms (2 queries, 1 cached) | GC: 3.2ms)
+
+
+Started GET "/athletes/1/stats" for 127.0.0.1 at 2026-03-30 13:05:06 +0100
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:62:in `stats'
+  [1m[36mTrainingSession Sum (1.1ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `stats'
+  [1m[36mTrainingSession Average (0.2ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:66:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:16
+  [1m[36mTrainingSession Load (2.0ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:28
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 197.2ms | GC: 39.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 227.7ms | GC: 45.1ms)
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-03-30 13:05:06 +0100
+Completed 200 OK in 387ms (Views: 230.9ms | ActiveRecord: 4.5ms (5 queries, 0 cached) | GC: 84.6ms)
+
+
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 9.9ms | GC: 2.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | GC: 2.8ms)
+Completed 200 OK in 117ms (Views: 13.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 2.8ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-03-30 13:05:16 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 1.7ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.6ms)
+Completed 200 OK in 106ms (Views: 2.8ms | ActiveRecord: 0.1ms (2 queries, 1 cached) | GC: 0.6ms)
+
+
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-03-30 13:05:16 +0100
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 5.9ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | GC: 0.5ms)
+Completed 200 OK in 106ms (Views: 7.7ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-03-30 13:05:17 +0100
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 5.2ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.7ms)
+Completed 200 OK in 115ms (Views: 6.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-03-30 13:05:18 +0100
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 1.0ms | GC: 0.5ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 4.9ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | GC: 0.5ms)
+Completed 200 OK in 90ms (Views: 6.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/athletes/2" for 127.0.0.1 at 2026-03-30 13:05:19 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 1.3ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.3ms)
+Completed 200 OK in 121ms (Views: 2.2ms | ActiveRecord: 0.1ms (2 queries, 1 cached) | GC: 0.3ms)
+
+
+Started GET "/athletes/2/training_sessions/new" for 127.0.0.1 at 2026-03-30 13:05:19 +0100
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 4.5ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 0.2ms)
+Completed 200 OK in 96ms (Views: 6.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/athletes/2/stats" for 127.0.0.1 at 2026-03-30 13:05:21 +0100
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:62:in `stats'
+  [1m[36mTrainingSession Sum (0.1ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `stats'
+  [1m[36mTrainingSession Average (0.1ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:66:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:16
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:28
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.0ms)
+Completed 200 OK in 119ms (Views: 9.3ms | ActiveRecord: 0.5ms (5 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/athletes/2" for 127.0.0.1 at 2026-03-30 13:05:33 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 141ms (Views: 2.0ms | ActiveRecord: 0.1ms (2 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/2/edit" for 127.0.0.1 at 2026-03-30 13:05:34 +0100
+Processing by AthletesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='edit',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/edit.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 4.3ms | GC: 0.4ms)
+  Rendered athletes/edit.html.erb within layouts/application (Duration: 6.2ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | GC: 0.4ms)
+Completed 200 OK in 109ms (Views: 11.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/athletes/2" for 127.0.0.1 at 2026-03-30 13:05:34 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.0ms)
+Completed 200 OK in 102ms (Views: 2.5ms | ActiveRecord: 0.2ms (2 queries, 1 cached) | GC: 0.4ms)
+
+
+Started GET "/athletes/2/stats" for 127.0.0.1 at 2026-03-30 13:05:35 +0100
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:62:in `stats'
+  [1m[36mTrainingSession Sum (0.1ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `stats'
+  [1m[36mTrainingSession Average (0.1ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:66:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:16
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:28
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 81ms (Views: 3.0ms | ActiveRecord: 0.4ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/2/edit" for 127.0.0.1 at 2026-03-30 13:05:36 +0100
+Processing by AthletesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='edit',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/edit.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 1.5ms | GC: 0.0ms)
+  Rendered athletes/edit.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 101ms (Views: 2.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-03-30 13:05:37 +0100
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 78ms (Views: 3.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-03-30 13:06:51 +0100
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (1.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  [1m[36mTrainingSession Load (1.8ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" IN (1, 2, 3) /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 3.3ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 52.5ms | GC: 1.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 56.2ms | GC: 1.7ms)
+Completed 200 OK in 165ms (Views: 54.3ms | ActiveRecord: 4.8ms (2 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-04-02 19:32:24 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (2.3ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" IN (1, 2, 3) /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 1.4ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 104.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 118.1ms | GC: 0.0ms)
+Completed 200 OK in 423ms (Views: 126.0ms | ActiveRecord: 3.9ms (2 queries, 0 cached) | GC: 2.6ms)
+
+
+Started GET "/athletes/2" for 127.0.0.1 at 2026-04-02 19:32:26 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:72:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 2 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 2 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 9.6ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 36.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | GC: 0.0ms)
+Completed 200 OK in 140ms (Views: 38.4ms | ActiveRecord: 0.4ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-04-10 10:25:25 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (1.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" IN (1, 2, 3) /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 2.0ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 119.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 148.6ms | GC: 0.0ms)
+Completed 200 OK in 461ms (Views: 152.5ms | ActiveRecord: 4.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/application-cf8a18cb.css" for 127.0.0.1 at 2026-04-10 10:25:26 +0100
+Started GET "/athletes/3" for 127.0.0.1 at 2026-04-10 10:25:32 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 3 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:64:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 3 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 3 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 11.6ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 16.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | GC: 0.0ms)
+Completed 200 OK in 117ms (Views: 17.4ms | ActiveRecord: 0.3ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-04-10 10:25:34 +0100
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" IN (1, 2, 3) /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 1.0ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 25.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | GC: 0.0ms)
+Completed 200 OK in 121ms (Views: 25.8ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-10 10:25:37 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:64:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 45.3ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 66.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 68.6ms | GC: 0.0ms)
+Completed 200 OK in 262ms (Views: 73.7ms | ActiveRecord: 0.3ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-10 10:25:37 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:64:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered athletes/show.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 168ms (Views: 3.6ms | ActiveRecord: 0.2ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/stats" for 127.0.0.1 at 2026-04-10 10:25:38 +0100
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:55:in `stats'
+  [1m[36mTrainingSession Sum (0.1ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:58:in `stats'
+  [1m[36mTrainingSession Average (0.4ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:59:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:16
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:28
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 7.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | GC: 0.0ms)
+Completed 200 OK in 152ms (Views: 11.2ms | ActiveRecord: 1.7ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/stats" for 127.0.0.1 at 2026-04-10 10:28:41 +0100
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:56:in `stats'
+  [1m[36mTrainingSession Sum (0.1ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:59:in `stats'
+  [1m[36mTrainingSession Average (0.2ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:60:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:16
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:28
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 26.2ms | GC: 1.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | GC: 1.0ms)
+Completed 200 OK in 158ms (Views: 31.4ms | ActiveRecord: 3.5ms (5 queries, 0 cached) | GC: 3.0ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-10 10:28:44 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (5.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 3.7ms | GC: 0.6ms)
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:9
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC LIMIT 5 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:21
+  Rendered athletes/show.html.erb within layouts/application (Duration: 13.4ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | GC: 0.6ms)
+Completed 200 OK in 129ms (Views: 14.4ms | ActiveRecord: 5.4ms (5 queries, 1 cached) | GC: 0.6ms)
+
+
