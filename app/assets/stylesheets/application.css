@@ -258,6 +258,34 @@ label {
   font-weight: 600;
 }
 
+fieldset.card {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+fieldset.card legend {
+  padding: 0;
+  margin: 0 0 0.75rem;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
 input[type="text"],
 input[type="number"],
 input[type="date"],

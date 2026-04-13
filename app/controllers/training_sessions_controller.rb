@@ -1,7 +1,7 @@
 class TrainingSessionsController < ApplicationController
   before_action :set_athlete
   def new
-    @training_session = @athlete.training_sessions.new
+    @training_session = @athlete.training_sessions.new(date: Date.current)
   end
 
   def create

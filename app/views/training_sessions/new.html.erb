@@ -1,38 +1,70 @@
-<h2>Add Training Session for <%= @athlete.name %></h2>
-<p class="muted">Capture workout details to keep stats accurate and up to date.</p>
+<% content_for :title, "Add training session" %>
+
+<h1>Add training session</h1>
+<p class="muted">Log a workout for <strong><%= @athlete.name %></strong>. You can always review totals on the athlete profile and stats pages.</p>
 
 <%= form_with(model: [@athlete, @training_session], local: true) do |f| %>
-  <div>
-    <%= f.label :date %>
-    <%= f.date_field :date %>
-  </div>
+  <% if @training_session.errors.any? %>
+    <div class="alert">
+      <h2><%= pluralize(@training_session.errors.count, "error") %> prevented this session from being saved:</h2>
+      <ul>
+        <% @training_session.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div>
-    <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %>
-  </div>
+  <fieldset class="card">
+    <legend>When</legend>
 
-  <div>
-    <%= f.label :finish_time %>
-    <%= f.datetime_select :finish_time %>
-  </div>
+    <div class="grid-list">
+      <div>
+        <%= f.label :date, "Session date" %>
+        <%= f.date_field :date %>
+        <p class="hint">Pick the day this session happened.</p>
+      </div>
+    </div>
+  </fieldset>
 
-  <div>
-    <%= f.label :average_speed %>
-    <%= f.number_field :average_speed, step: 0.1 %>
-  </div>
+  <fieldset class="card">
+    <legend>Timing (optional)</legend>
 
-  <div>
-    <%= f.label :total_distance %>
-    <%= f.number_field :total_distance, step: 0.01 %>
-  </div>
+    <div class="grid-list">
+      <div>
+        <%= f.label :start_time, "Start" %>
+        <%= f.datetime_field :start_time, step: 60 %>
+        <p class="hint">If you skip start/finish times, you can still save distance and average speed.</p>
+      </div>
 
-  <div>
-    <%= f.submit "Add Session" %>
+      <div>
+        <%= f.label :finish_time, "Finish" %>
+        <%= f.datetime_field :finish_time, step: 60 %>
+        <p class="hint">Finish should be after start (when both are provided).</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="card">
+    <legend>Performance</legend>
+
+    <div class="grid-list">
+      <div>
+        <%= f.label :total_distance, "Distance (km)" %>
+        <%= f.number_field :total_distance, step: 0.01, min: 0, inputmode: "decimal", placeholder: "e.g. 5.25" %>
+        <p class="hint">Total distance covered during the session.</p>
+      </div>
+
+      <div>
+        <%= f.label :average_speed, "Average speed (km/h)" %>
+        <%= f.number_field :average_speed, step: 0.1, min: 0, inputmode: "decimal", placeholder: "e.g. 10.5" %>
+        <p class="hint">This is the value used for your stats “average speed” summary.</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= f.submit "Save session" %>
+    <%= link_to "Cancel", athlete_path(@athlete), class: "btn-secondary btn" %>
   </div>
 <% end %>
-
-<div class="actions">
-  <%= link_to "Back to profile", athlete_path(@athlete), class: "btn-secondary btn" %>
-</div>
-
