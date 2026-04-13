@@ -4,6 +4,8 @@ A simple Rails app for managing athlete profiles, recording training sessions, a
 
 ## Features
 
+- **Accounts**: sign up, sign in, and sign out (passwords stored with `bcrypt`)
+- **Authorization**: each signed-in user only sees their own athletes and training sessions
 - **Athletes CRUD**: create, view, edit, and delete athlete profiles
 - **Training sessions**: add sessions per athlete
 - **Stats page**: shows total distance and average speed (based on recorded sessions)
@@ -39,9 +41,15 @@ Then open the app at `http://localhost:3000`.
 
 ## How to Use
 
+### Account workflow
+
+- Visit `/` (you will be redirected to sign in if you are not authenticated)
+- Create an account at `/users/new`, or sign in at `/session/new`
+- Sign out from the header button
+
 ### Athlete workflow
 
-- Go to the Athletes list (root): `/`
+- Go to the Athletes list: `/athletes`
 - Click **New athlete** to create a profile
 - On an athlete profile page you can:
   - **View stats**
@@ -69,14 +77,27 @@ Calculated values:
 
 Defined in `config/routes.rb`:
 
+- `resource :session` (sign in/out)
+- `resources :users, only: [:new, :create]` (sign up)
 - `resources :athletes`
 - `GET /athletes/:id/stats` (member route)
 - `resources :training_sessions, only: [:new, :create]` nested under athletes
-- Root: `athletes#index`
+- Root: `home#show` (redirects to `/athletes` when signed in, otherwise `/session/new`)
 
 ## Data Model
 
+### User
+
+Has many athletes.
+
+Key fields (see `db/schema.rb`):
+
+- `email` (string, unique)
+- `password_digest` (string)
+
 ### Athlete
+
+Belongs to a user.
 
 Has many training sessions.
 
@@ -87,6 +108,7 @@ Key fields (see `db/schema.rb`):
 - `age` (integer)
 - `sport_definition` (string)
 - `email` (string)
+- `user_id` (foreign key)
 
 ### TrainingSession
 

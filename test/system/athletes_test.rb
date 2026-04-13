@@ -2,15 +2,25 @@ require "application_system_test_case"
 
 class AthletesTest < ApplicationSystemTestCase
   setup do
+    @user = users(:alice)
     @athlete = athletes(:one)
   end
 
+  def sign_in
+    visit new_session_url
+    fill_in "Email", with: @user.email
+    fill_in "Password", with: "password123"
+    click_on "Sign in"
+  end
+
   test "visiting the index" do
+    sign_in
     visit athletes_url
     assert_selector "h1", text: "Athletes"
   end
 
   test "should create athlete" do
+    sign_in
     visit athletes_url
     click_on "New athlete"
 
@@ -26,6 +36,7 @@ class AthletesTest < ApplicationSystemTestCase
   end
 
   test "should update Athlete" do
+    sign_in
     visit athlete_url(@athlete)
     click_on "Edit athlete", match: :first
 
@@ -41,6 +52,7 @@ class AthletesTest < ApplicationSystemTestCase
   end
 
   test "should destroy Athlete" do
+    sign_in
     visit athlete_url(@athlete)
     accept_confirm do
       click_on "Delete athlete", match: :first

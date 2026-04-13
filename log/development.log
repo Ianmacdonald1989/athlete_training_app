@@ -10133,3 +10133,602 @@ Processing by AthletesController#show as HTML
 Completed 200 OK in 129ms (Views: 14.4ms | ActiveRecord: 5.4ms (5 queries, 1 cached) | GC: 0.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2026-04-13 17:12:04 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (4.6ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" IN (1, 2, 3) /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 3.3ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 87.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 102.3ms | GC: 0.0ms)
+Completed 200 OK in 356ms (Views: 99.6ms | ActiveRecord: 9.7ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-13 17:12:07 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 5.2ms | GC: 0.0ms)
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:9
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC LIMIT 5 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:21
+  Rendered athletes/show.html.erb within layouts/application (Duration: 27.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | GC: 0.0ms)
+Completed 200 OK in 180ms (Views: 30.8ms | ActiveRecord: 0.7ms (5 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-04-13 17:12:11 +0100
+Processing by AthletesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  [1m[36mTrainingSession Load (0.4ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" IN (1, 2, 3) /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/_athlete.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 3.2ms | GC: 0.0ms)
+  Rendered athletes/_athlete.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered athletes/index.html.erb within layouts/application (Duration: 11.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | GC: 0.0ms)
+Completed 200 OK in 118ms (Views: 12.4ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-13 17:12:13 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.4ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `set_athlete'
+  [1m[36mCACHE Athlete Load (0.0ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1[0m
+  ↳ app/controllers/athletes_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.3ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 8.1ms | GC: 0.0ms)
+  [1m[36mTrainingSession Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:9
+  [1m[36mTrainingSession Load (0.2ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC LIMIT 5 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:21
+  Rendered athletes/show.html.erb within layouts/application (Duration: 23.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | GC: 0.0ms)
+Completed 200 OK in 441ms (Views: 149.3ms | ActiveRecord: 3.5ms (5 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-04-13 17:12:14 +0100
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 48.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 49.2ms | GC: 0.0ms)
+Completed 200 OK in 153ms (Views: 50.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/stats" for 127.0.0.1 at 2026-04-13 17:12:15 +0100
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:56:in `stats'
+  [1m[36mTrainingSession Sum (6.5ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:59:in `stats'
+  [1m[36mTrainingSession Average (0.2ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:60:in `stats'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/stats.html.erb within layouts/application
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:16
+  [1m[36mTrainingSession Load (6.3ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC /*action='stats',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/stats.html.erb:28
+  Rendered athletes/stats.html.erb within layouts/application (Duration: 26.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | GC: 0.0ms)
+Completed 200 OK in 249ms (Views: 26.1ms | ActiveRecord: 13.3ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Migrating to CreateUsersAndAthleteOwnership (20260413120000)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTrainingSession Delete All (0.1ms)[0m  [1m[31mDELETE FROM "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[36mAthlete Delete All (0.1ms)[0m  [1m[31mDELETE FROM "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aathletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "aathletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at" FROM "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "athletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at" FROM "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_athletes_on_user_id" ON "athletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aathletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aathletes_on_user_id" ON "aathletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "aathletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at","user_id")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at","user_id" FROM "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_850341c714"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_athletes_on_user_id" ON "athletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "athletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at","user_id")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at","user_id" FROM "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260413120000') RETURNING "version" /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "athlete" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "athlete" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_athletes_on_user_id" ON "athletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "training_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime(6), "finish_time" datetime(6), "average_speed" integer, "total_distance" float, "date" date, "athlete_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_training_sessions_on_athlete_id" ON "training_sessions" ("athlete_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aathletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aathletes_on_user_id" ON "aathletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "aathletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at","user_id")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at","user_id" FROM "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_850341c714"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_athletes_on_user_id" ON "athletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "athletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at","user_id")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at","user_id" FROM "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[35mPRAGMA foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atraining_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime(6), "finish_time" datetime(6), "average_speed" integer, "total_distance" float, "date" date, "athlete_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atraining_sessions_on_athlete_id" ON "atraining_sessions" ("athlete_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "atraining_sessions" ("id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at")
+                     SELECT "id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at" FROM "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "training_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime(6), "finish_time" datetime(6), "average_speed" integer, "total_distance" float, "date" date, "athlete_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_423301ee50"
+FOREIGN KEY ("athlete_id")
+  REFERENCES "athletes" ("id")
+) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_training_sessions_on_athlete_id" ON "training_sessions" ("athlete_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "training_sessions" ("id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at")
+                     SELECT "id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at" FROM "atraining_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "atraining_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260413120000) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20250822162835),
+(20250822150538),
+(20250817192204),
+(20250103000000); /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-04-13 16:17:13.897409', '2026-04-13 16:17:13.897412') RETURNING "key" /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2026-04-13 16:17:13.899487' WHERE "ar_internal_metadata"."key" = 'environment' /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'b3892b707940dcb48c1c067bd9a32ebedaf4deae', '2026-04-13 16:17:13.900922', '2026-04-13 16:17:13.900923') RETURNING "key" /*application='AthleteTrainingApp'*/[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'alice@example.com' LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'bob@example.com' LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" ORDER BY "athletes"."id" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mAthlete Pluck (0.1ms)[0m  [1m[34mSELECT "athletes"."id", "athletes"."user_id" FROM "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "athlete" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "athlete" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_athletes_on_user_id" ON "athletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "training_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime(6), "finish_time" datetime(6), "average_speed" integer, "total_distance" float, "date" date, "athlete_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_training_sessions_on_athlete_id" ON "training_sessions" ("athlete_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[35mPRAGMA foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aathletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aathletes_on_user_id" ON "aathletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "aathletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at","user_id")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at","user_id" FROM "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "athletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "athletes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "profile" varchar, "name" varchar, "age" integer, "sport_definition" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_850341c714"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_athletes_on_user_id" ON "athletes" ("user_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "athletes" ("id","profile","name","age","sport_definition","email","created_at","updated_at","user_id")
+                     SELECT "id","profile","name","age","sport_definition","email","created_at","updated_at","user_id" FROM "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aathletes" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[35mPRAGMA foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atraining_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime(6), "finish_time" datetime(6), "average_speed" integer, "total_distance" float, "date" date, "athlete_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_atraining_sessions_on_athlete_id" ON "atraining_sessions" ("athlete_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "atraining_sessions" ("id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at")
+                     SELECT "id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at" FROM "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "training_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "training_sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime(6), "finish_time" datetime(6), "average_speed" integer, "total_distance" float, "date" date, "athlete_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_423301ee50"
+FOREIGN KEY ("athlete_id")
+  REFERENCES "athletes" ("id")
+) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_training_sessions_on_athlete_id" ON "training_sessions" ("athlete_id") /*application='AthleteTrainingApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "training_sessions" ("id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at")
+                     SELECT "id","start_time","finish_time","average_speed","total_distance","date","athlete_id","created_at","updated_at" FROM "atraining_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "atraining_sessions" /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260413120000) /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20250822162835),
+(20250822150538),
+(20250817192204),
+(20250103000000); /*application='AthleteTrainingApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-04-13 16:18:41.218959', '2026-04-13 16:18:41.218962') RETURNING "key" /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2026-04-13 16:18:41.222186' WHERE "ar_internal_metadata"."key" = 'environment' /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='AthleteTrainingApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'b3892b707940dcb48c1c067bd9a32ebedaf4deae', '2026-04-13 16:18:41.225001', '2026-04-13 16:18:41.225004') RETURNING "key" /*application='AthleteTrainingApp'*/[0m
+Started GET "/athletes/1/stats" for 127.0.0.1 at 2026-04-13 17:23:21 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by AthletesController#stats as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://127.0.0.1:3000/session/new
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 88ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2026-04-13 17:23:22 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | GC: 0.8ms)
+Completed 200 OK in 97ms (Views: 17.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/assets/application-b4565127.css" for 127.0.0.1 at 2026-04-13 17:23:22 +0100
+Started POST "/session" for 127.0.0.1 at 2026-04-13 17:23:49 +0100
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Sign in"}
+Completed 500 Internal Server Error in 115ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+LoadError (cannot load such file -- bcrypt):
+  
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/sessions_controller.rb:11:in `create'
+Started GET "/" for 127.0.0.1 at 2026-04-13 17:31:11 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by HomeController#show as HTML
+Redirected to http://127.0.0.1:3000/session/new
+Completed 302 Found in 170ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2026-04-13 17:31:11 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | GC: 0.0ms)
+Completed 200 OK in 125ms (Views: 32.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2026-04-13 17:31:24 +0100
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'ianmacd@hotmail.co.uk' LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='sessions'*/[0m
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 142ms (Views: 3.7ms | ActiveRecord: 5.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2026-04-13 17:31:36 +0100
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"[FILTERED]", "password"=>"[FILTERED]", "commit"=>"Sign in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'ianmacd@hotmail.co.uk' LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='sessions'*/[0m
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 89ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2026-04-13 17:31:44 +0100
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 14.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 56.8ms | GC: 33.2ms)
+Completed 200 OK in 153ms (Views: 58.4ms | ActiveRecord: 0.3ms (0 queries, 0 cached) | GC: 33.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2026-04-13 17:32:07 +0100
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create account"}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='AthleteTrainingApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'ianmacd@hotmail.co.uk' LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ('ianmacd@hotmail.co.uk', '$2a$12$3HG5M0avzfI7u/Cc6N6rSu7MxNm.bgEXiT9cxhe3X1RxD/XKoP5qi', '2026-04-13 16:32:08.066249', '2026-04-13 16:32:08.066249') RETURNING "id" /*action='create',application='AthleteTrainingApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='AthleteTrainingApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Redirected to http://127.0.0.1:3000/athletes
+Completed 302 Found in 307ms (ActiveRecord: 5.7ms (2 queries, 0 cached) | GC: 2.5ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-04-13 17:32:08 +0100
+Processing by AthletesController#index as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (0.5ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/index.html.erb within layouts/application (Duration: 5.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | GC: 0.0ms)
+Completed 200 OK in 112ms (Views: 11.6ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 3.0ms)
+
+
+Started GET "/athletes/new" for 127.0.0.1 at 2026-04-13 17:32:11 +0100
+Processing by AthletesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/new.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 6.8ms | GC: 0.0ms)
+  Rendered athletes/new.html.erb within layouts/application (Duration: 8.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | GC: 0.3ms)
+Completed 200 OK in 106ms (Views: 10.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/athletes/new" for 127.0.0.1 at 2026-04-13 17:32:12 +0100
+Processing by AthletesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/new.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered athletes/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.4ms)
+Completed 200 OK in 87ms (Views: 3.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-04-13 17:32:15 +0100
+Processing by HomeController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='home'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Redirected to http://127.0.0.1:3000/athletes
+Completed 302 Found in 92ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/athletes" for 127.0.0.1 at 2026-04-13 17:32:15 +0100
+Processing by AthletesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/index.html.erb within layouts/application
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 /*action='index',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/index.html.erb:10
+  Rendered athletes/index.html.erb within layouts/application (Duration: 2.3ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | GC: 0.6ms)
+Completed 200 OK in 89ms (Views: 5.0ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/athletes/new" for 127.0.0.1 at 2026-04-13 17:32:16 +0100
+Processing by AthletesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/new.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 1.2ms | GC: 0.0ms)
+  Rendered athletes/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 89ms (Views: 3.4ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/athletes" for 127.0.0.1 at 2026-04-13 17:32:39 +0100
+Processing by AthletesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "athlete"=>{"profile"=>"Ian's Profile ", "name"=>"Ian Macdonald", "age"=>"30", "sport_definition"=>"Basketball ", "email"=>"[FILTERED]"}, "commit"=>"Create Athlete"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `block in create'
+  [1m[36mAthlete Create (3.5ms)[0m  [1m[32mINSERT INTO "athletes" ("profile", "name", "age", "sport_definition", "email", "created_at", "updated_at", "user_id") VALUES ('Ian''s Profile ', 'Ian Macdonald', 30, 'Basketball ', 'ianmacd@hotmail.co.uk', '2026-04-13 16:32:39.691134', '2026-04-13 16:32:39.691134', 1) RETURNING "id" /*action='create',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `block in create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:23:in `block in create'
+Redirected to http://127.0.0.1:3000/athletes/1
+Completed 302 Found in 88ms (ActiveRecord: 4.1ms (2 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-13 17:32:39 +0100
+Processing by AthletesController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:63:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:9
+  Rendered athletes/show.html.erb within layouts/application (Duration: 9.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | GC: 0.0ms)
+Completed 200 OK in 104ms (Views: 10.8ms | ActiveRecord: 0.8ms (4 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/athletes/1/edit" for 127.0.0.1 at 2026-04-13 17:32:40 +0100
+Processing by AthletesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='edit',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='edit',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:63:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/edit.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 2.4ms | GC: 0.0ms)
+  Rendered athletes/edit.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 200 OK in 132ms (Views: 5.2ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-04-13 17:32:41 +0100
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 16.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | GC: 0.0ms)
+Completed 200 OK in 122ms (Views: 19.4ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/athletes/1/training_sessions" for 127.0.0.1 at 2026-04-13 17:33:14 +0100
+Processing by TrainingSessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "training_session"=>{"date"=>"2026-04-13", "start_time(1i)"=>"2026", "start_time(2i)"=>"4", "start_time(3i)"=>"13", "start_time(4i)"=>"16", "start_time(5i)"=>"32", "finish_time(1i)"=>"2026", "finish_time(2i)"=>"4", "finish_time(3i)"=>"13", "finish_time(4i)"=>"16", "finish_time(5i)"=>"40", "average_speed"=>"12", "total_distance"=>"10"}, "commit"=>"Add Session", "athlete_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (8.8ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:9:in `create'
+  [1m[36mTrainingSession Create (7.1ms)[0m  [1m[32mINSERT INTO "training_sessions" ("start_time", "finish_time", "average_speed", "total_distance", "date", "athlete_id", "created_at", "updated_at") VALUES ('2026-04-13 16:32:00', '2026-04-13 16:40:00', 12, 10.0, '2026-04-13', 1, '2026-04-13 16:33:14.480829', '2026-04-13 16:33:14.480829') RETURNING "id" /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:9:in `create'
+Redirected to http://127.0.0.1:3000/athletes/1
+Completed 302 Found in 155ms (ActiveRecord: 17.7ms (3 queries, 0 cached) | GC: 7.3ms)
+
+
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-13 17:33:14 +0100
+Processing by AthletesController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:63:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 1.7ms | GC: 0.0ms)
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:9
+  [1m[36mTrainingSession Load (0.8ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC LIMIT 5 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:21
+  Rendered athletes/show.html.erb within layouts/application (Duration: 5.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 81ms (Views: 5.6ms | ActiveRecord: 1.2ms (5 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/athletes/1/edit" for 127.0.0.1 at 2026-04-13 17:33:14 +0100
+Processing by AthletesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='edit',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='edit',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:63:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/edit.html.erb within layouts/application
+  Rendered athletes/_form.html.erb (Duration: 5.7ms | GC: 0.5ms)
+  Rendered athletes/edit.html.erb within layouts/application (Duration: 7.2ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.5ms)
+Completed 200 OK in 110ms (Views: 13.5ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-04-13 17:33:17 +0100
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.1ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 7.1ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.5ms)
+Completed 200 OK in 95ms (Views: 9.3ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.8ms)
+
+

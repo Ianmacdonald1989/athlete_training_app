@@ -29,13 +29,22 @@
   <body>
     <main class="page-shell">
       <header class="app-header">
-        <%= link_to "Athlete Training App", athletes_path, class: "app-title" %>
-        <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-label="Toggle dark mode" aria-checked="false">
-          <span class="theme-switch-track">
-            <span class="theme-switch-thumb"></span>
-          </span>
-          <span class="theme-switch-label">Dark mode</span>
-        </button>
+        <%= link_to "Athlete Training App", root_path, class: "app-title" %>
+        <div class="app-header-actions">
+          <% if current_user %>
+            <span class="muted app-header-email"><%= current_user.email %></span>
+            <%= button_to "Sign out", session_path, method: :delete, class: "btn-secondary btn" %>
+          <% else %>
+            <%= link_to "Sign in", new_session_path, class: "btn-secondary btn" %>
+            <%= link_to "Sign up", new_user_path, class: "btn" %>
+          <% end %>
+          <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-label="Toggle dark mode" aria-checked="false">
+            <span class="theme-switch-track">
+              <span class="theme-switch-thumb"></span>
+            </span>
+            <span class="theme-switch-label">Dark mode</span>
+          </button>
+        </div>
       </header>
       <%= yield %>
     </main>

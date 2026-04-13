@@ -71,6 +71,24 @@ h1, h2 {
   margin-bottom: 1.5rem;
 }
 
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.app-header-email {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .app-header-email {
+    display: inline;
+  }
+}
+
 .app-title {
   font-size: 1.15rem;
   font-weight: 700;

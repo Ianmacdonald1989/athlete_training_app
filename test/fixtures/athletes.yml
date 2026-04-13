@@ -6,6 +6,7 @@ one:
   age: 1
   sport_definition: MyString
   email: MyString
+  user: alice
 
 two:
   profile: MyString
@@ -13,3 +14,4 @@ two:
   age: 1
   sport_definition: MyString
   email: MyString
+  user: bob

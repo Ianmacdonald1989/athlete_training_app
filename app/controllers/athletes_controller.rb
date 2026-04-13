@@ -1,24 +1,23 @@
 class AthletesController < ApplicationController
-  before_action :set_athlete, only: %i[ show edit update destroy ]
+  before_action :set_athlete, only: %i[ show edit update destroy stats ]
 
   def index
-    @athletes = Athlete.includes(:training_sessions).all
+    @athletes = current_user.athletes.includes(:training_sessions)
   end
 
   def show
-    @athlete = Athlete.find(params[:id])
     @recent_training_sessions = @athlete.training_sessions.order(date: :desc).limit(5)
   end
 
   def new
-    @athlete = Athlete.new
+    @athlete = current_user.athletes.new
   end
 
   def edit
   end
 
   def create
-    @athlete = Athlete.new(athlete_params)
+    @athlete = current_user.athletes.new(athlete_params)
 
     respond_to do |format|
       if @athlete.save
@@ -53,7 +52,6 @@ class AthletesController < ApplicationController
   end
 
   def stats
-    @athlete = Athlete.find(params[:id])
     @training_sessions = @athlete.training_sessions.order(date: :desc)
 
     @total_distance = @training_sessions.sum(:total_distance)
@@ -62,7 +60,7 @@ class AthletesController < ApplicationController
 
   private
     def set_athlete
-      @athlete = Athlete.find(params[:id])
+      @athlete = current_user.athletes.find(params[:id])
     end
 
     def athlete_params

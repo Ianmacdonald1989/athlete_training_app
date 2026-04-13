@@ -16,7 +16,7 @@ class TrainingSessionsController < ApplicationController
   private
 
   def set_athlete
-    @athlete = Athlete.find(params[:athlete_id])
+    @athlete = current_user.athletes.find(params[:athlete_id])
   end
 
   def training_session_params

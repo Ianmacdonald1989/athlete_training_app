@@ -2,7 +2,9 @@ require "test_helper"
 
 class TrainingSessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:alice)
     @athlete = athletes(:one)
+    sign_in_as(@user)
   end
 
   test "should get new" do

@@ -1,0 +1,28 @@
+<% content_for :title, "Sign in" %>
+
+<h1>Sign in</h1>
+
+<% if alert.present? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<%= form_with url: session_path, method: :post, local: true do %>
+  <div>
+    <%= label_tag :email, "Email" %>
+    <%= email_field_tag :email, params[:email], autocomplete: "username" %>
+  </div>
+
+  <div>
+    <%= label_tag :password, "Password" %>
+    <%= password_field_tag :password, nil, autocomplete: "current-password" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Sign in" %>
+  </div>
+<% end %>
+
+<p class="muted">
+  Need an account?
+  <%= link_to "Create one", new_user_path %>
+</p>

@@ -2,7 +2,9 @@ require "test_helper"
 
 class AthletesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:alice)
     @athlete = athletes(:one)
+    sign_in_as(@user)
   end
 
   test "should get index" do
@@ -77,5 +79,13 @@ class AthletesControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "9.5 km"
     assert_includes @response.body, "Average Speed"
     assert_includes @response.body, "10.0 km/h"
+  end
+
+  test "should not allow accessing another user's athlete" do
+    other_user = users(:bob)
+    sign_in_as(other_user)
+
+    get athlete_url(@athlete)
+    assert_response :not_found
   end
 end

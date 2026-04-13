@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_22_162835) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_13_120000) do
   create_table "athlete", force: :cascade do |t|
     t.string "profile"
     t.string "name"
@@ -29,6 +29,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_162835) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_athletes_on_user_id"
   end
 
   create_table "training_sessions", force: :cascade do |t|
@@ -43,5 +45,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_22_162835) do
     t.index ["athlete_id"], name: "index_training_sessions_on_athlete_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "athletes", "users"
   add_foreign_key "training_sessions", "athletes"
 end
