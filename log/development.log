@@ -10820,3 +10820,53 @@ Processing by TrainingSessionsController#new as HTML
 Completed 200 OK in 82ms (Views: 2.1ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.4ms)
 
 
+Started GET "/athletes/1/training_sessions/new" for 127.0.0.1 at 2026-04-14 17:33:06 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='AthleteTrainingApp'*/[0m
+Processing by TrainingSessionsController#new as HTML
+  Parameters: {"athlete_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='new',application='AthleteTrainingApp',controller='training_sessions'*/[0m
+  ↳ app/controllers/training_sessions_controller.rb:19:in `set_athlete'
+  Rendering layout layouts/application.html.erb
+  Rendering training_sessions/new.html.erb within layouts/application
+  Rendered training_sessions/new.html.erb within layouts/application (Duration: 27.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 45.6ms | GC: 0.0ms)
+Completed 200 OK in 1063ms (Views: 57.5ms | ActiveRecord: 3.9ms (2 queries, 0 cached) | GC: 3.0ms)
+
+
+Started GET "/assets/application-e12b5e63.css" for 127.0.0.1 at 2026-04-14 17:33:07 +0100
+Started GET "/athletes/1" for 127.0.0.1 at 2026-04-14 17:33:13 +0100
+Processing by AthletesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mAthlete Load (0.2ms)[0m  [1m[34mSELECT "athletes".* FROM "athletes" WHERE "athletes"."user_id" = 1 AND "athletes"."id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:65:in `set_athlete'
+  [1m[36mTrainingSession Sum (0.2ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 AND (COALESCE(training_sessions.date, DATE(training_sessions.created_at)) BETWEEN '2026-04-13' AND '2026-04-14') /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:85:in `summarize_sessions'
+  [1m[36mTrainingSession Average (0.1ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 AND (COALESCE(training_sessions.date, DATE(training_sessions.created_at)) BETWEEN '2026-04-13' AND '2026-04-14') /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:86:in `summarize_sessions'
+  [1m[36mTrainingSession Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 AND (COALESCE(training_sessions.date, DATE(training_sessions.created_at)) BETWEEN '2026-04-13' AND '2026-04-14') /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:90:in `summarize_sessions'
+  [1m[36mTrainingSession Sum (0.2ms)[0m  [1m[34mSELECT SUM("training_sessions"."total_distance") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 AND (COALESCE(training_sessions.date, DATE(training_sessions.created_at)) BETWEEN '2026-03-16' AND '2026-04-14') /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:85:in `summarize_sessions'
+  [1m[36mTrainingSession Average (0.1ms)[0m  [1m[34mSELECT AVG("training_sessions"."average_speed") FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 AND (COALESCE(training_sessions.date, DATE(training_sessions.created_at)) BETWEEN '2026-03-16' AND '2026-04-14') /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:86:in `summarize_sessions'
+  [1m[36mTrainingSession Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 AND (COALESCE(training_sessions.date, DATE(training_sessions.created_at)) BETWEEN '2026-03-16' AND '2026-04-14') /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/controllers/athletes_controller.rb:90:in `summarize_sessions'
+  Rendering layout layouts/application.html.erb
+  Rendering athletes/show.html.erb within layouts/application
+  [1m[36mTrainingSession Load (0.1ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/_athlete.html.erb:5
+  Rendered athletes/_athlete.html.erb (Duration: 13.6ms | GC: 0.0ms)
+  Rendered athletes/_period_summaries.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  [1m[36mTrainingSession Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 LIMIT 1 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:11
+  [1m[36mTrainingSession Load (0.3ms)[0m  [1m[34mSELECT "training_sessions".* FROM "training_sessions" WHERE "training_sessions"."athlete_id" = 1 ORDER BY "training_sessions"."date" DESC LIMIT 5 /*action='show',application='AthleteTrainingApp',controller='athletes'*/[0m
+  ↳ app/views/athletes/show.html.erb:23
+  Rendered athletes/show.html.erb within layouts/application (Duration: 24.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 25.5ms | GC: 0.0ms)
+Completed 200 OK in 220ms (Views: 26.4ms | ActiveRecord: 1.6ms (11 queries, 0 cached) | GC: 0.0ms)
+
+

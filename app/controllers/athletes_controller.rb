@@ -7,6 +7,7 @@ class AthletesController < ApplicationController
 
   def show
     @recent_training_sessions = @athlete.training_sessions.order(date: :desc).limit(5)
+    assign_period_summaries(@athlete)
   end
 
   def new
@@ -56,6 +57,7 @@ class AthletesController < ApplicationController
 
     @total_distance = @training_sessions.sum(:total_distance)
     @average_speed = @training_sessions.average(:average_speed) || 0
+    assign_period_summaries(@athlete)
   end
 
   private
@@ -65,5 +67,29 @@ class AthletesController < ApplicationController
 
     def athlete_params
       params.require(:athlete).permit(:profile, :name, :age, :sport_definition, :email)
+    end
+
+    def assign_period_summaries(athlete)
+      sessions = athlete.training_sessions
+      day_sql = "COALESCE(training_sessions.date, DATE(training_sessions.created_at))"
+
+      today = Date.current
+      week_start = today.beginning_of_week
+      last30_start = today - 29.days
+
+      @summary_this_week = summarize_sessions(sessions.where("#{day_sql} BETWEEN ? AND ?", week_start, today))
+      @summary_last_30_days = summarize_sessions(sessions.where("#{day_sql} BETWEEN ? AND ?", last30_start, today))
+    end
+
+    def summarize_sessions(scope)
+      total_distance = scope.sum(:total_distance).to_f
+      average_speed = scope.average(:average_speed)
+      average_speed = average_speed.to_f if average_speed
+
+      {
+        sessions_count: scope.count,
+        total_distance: total_distance,
+        average_speed: average_speed || 0.0
+      }
     end
 end

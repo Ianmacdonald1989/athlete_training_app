@@ -1,0 +1,24 @@
+<% title = local_assigns.fetch(:title, "Summary") %>
+<% week = local_assigns.fetch(:this_week) %>
+<% month = local_assigns.fetch(:last_30_days) %>
+
+<h2><%= title %></h2>
+<p class="muted">Uses each session’s <strong>date</strong> when present; otherwise it falls back to the day the record was created.</p>
+
+<div class="grid-list">
+  <div class="card">
+    <h3>This week</h3>
+    <p class="muted">Since <%= Date.current.beginning_of_week.strftime("%Y-%m-%d") %></p>
+    <p><strong>Sessions:</strong> <%= week[:sessions_count] %></p>
+    <p><strong>Distance:</strong> <%= week[:total_distance].round(2) %> km</p>
+    <p><strong>Avg speed:</strong> <%= week[:average_speed].round(2) %> km/h</p>
+  </div>
+
+  <div class="card">
+    <h3>Last 30 days</h3>
+    <p class="muted">Rolling window ending today</p>
+    <p><strong>Sessions:</strong> <%= month[:sessions_count] %></p>
+    <p><strong>Distance:</strong> <%= month[:total_distance].round(2) %> km</p>
+    <p><strong>Avg speed:</strong> <%= month[:average_speed].round(2) %> km/h</p>
+  </div>
+</div>

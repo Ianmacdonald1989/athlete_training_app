@@ -1,5 +1,8 @@
 <h1><%= sport_icon(@athlete.sport_definition) %> <%= @athlete.name %> - Stats</h1>
 
+<%= render "period_summaries", this_week: @summary_this_week, last_30_days: @summary_last_30_days %>
+
+<h2>All time</h2>
 <div class="grid-list">
   <div class="card">
     <h2>Total Distance</h2>

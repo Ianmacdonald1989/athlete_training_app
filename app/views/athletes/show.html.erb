@@ -4,6 +4,8 @@
 
 <%= render @athlete %>
 
+<%= render "period_summaries", this_week: @summary_this_week, last_30_days: @summary_last_30_days %>
+
 <h2>Recent Training Sessions</h2>
 
 <% if @recent_training_sessions.any? %>
